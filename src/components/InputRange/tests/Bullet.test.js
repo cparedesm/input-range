@@ -1,13 +1,21 @@
 import React from 'react';
-import { render, fireEvent, getByTestId } from '@testing-library/react';
+import { render, fireEvent } from '@testing-library/react';
 import Bullet from '../js/Bullet';
 
-test('should setActive to true on mouseDown', () => {
-  const { getByTestId } = render(<Bullet />);
-  const bullet = getByTestId('bullet');
+describe('Bullet', () => {
+  let container, bullet;
+  
+  beforeEach(() => {
+    container = render(<Bullet />);
+    bullet = container.getByTestId('bullet');
+  })
 
-  expect(bullet.classList).not.toContain('active');
-  fireEvent.mouseDown(bullet, {});
-  expect(bullet.classList).toContain('active');
+  test('should trigger active class on mouseDown/mouseUp', () => {
+    expect(bullet.classList).not.toContain('active');
+    fireEvent.mouseDown(bullet);
+    expect(bullet.classList).toContain('active');
+    fireEvent.mouseUp(bullet);
+    expect(bullet.classList).not.toContain('active');
+  });
 })
 

@@ -5,7 +5,6 @@ import { getPercFromValue, getPositionFromEvent, getValueFromPosition } from "./
 
 const InputRange = ({min, max}) => {
   const tracker = useRef();
-
   const [minValue, setMinValue] = useState(min);
   const [maxValue, setMaxValue] = useState(max);
   const [value, setValue] = useState({left: minValue, right: maxValue});
@@ -27,7 +26,7 @@ const InputRange = ({min, max}) => {
 
   const handleChangeMin = (event) => {
     const newValue = event.target.value || 0;
-    const isNumber = /^[0-9\b]+$/.test(newValue);
+    const isNumber = /^[0-9]+$/.test(newValue);
     if (!isNumber) {
       return;
     }
@@ -49,7 +48,7 @@ const InputRange = ({min, max}) => {
 
   const handleChangeMax = (event) => {
     const newValue = event.target.value || 0;
-    const isNumber = /^[0-9\b]+$/.test(newValue);
+    const isNumber = /^[0-9]+$/.test(newValue);
     if (!isNumber) {
       return;
     }
@@ -70,14 +69,14 @@ const InputRange = ({min, max}) => {
 
   return(
     <div className="input-container">
-      <input className="input" type="text" value={minValue} onChange={handleChangeMin} />
+      <input id="min" className="input" type="text" value={minValue} onChange={handleChangeMin} />
       <div className="input-range">
         <div className="tracker" ref={tracker}>
           <Bullet value={value.left} perc={getPercFromValue(value.left, minValue, maxValue)} onBulletDrag={(e) => updatePosition(e, 'left')} />
           <Bullet value={value.right} perc={getPercFromValue(value.right, minValue, maxValue)} onBulletDrag={(e) => updatePosition(e, 'right')} />
         </div>
       </div>
-      <input className="input" type="text" value={maxValue} onChange={handleChangeMax} />
+      <input id="max" className="input" type="text" value={maxValue} onChange={handleChangeMax} />
     </div>
   )
 }

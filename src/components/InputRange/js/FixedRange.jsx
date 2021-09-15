@@ -3,7 +3,7 @@ import "../styles/InputRange.scss";
 import Bullet from "./Bullet";
 import { getPercFromValue, getPositionFromEvent, getValueFromPosition } from "./utils";
 
-const FixedRange = ({ range = [1.99, 5.99, 10.99, 30.99, 50.99, 70.99] }) => {
+const FixedRange = ({ range }) => {
   const tracker = useRef();
   const min = 0;
   const max = range.length - 1;

@@ -19,3 +19,12 @@ Once the project is initialized it can be constructed and executed in the naviga
 
 npm run mocks
 npm run start
+
+```
+
+## Unit test
+
+```bash
+npm run test
+
+```
