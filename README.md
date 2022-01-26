@@ -13,7 +13,7 @@ npm install
 
 ```
 
-Once the project is initialized it can be constructed and executed in the navigator:
+Once the project is initialized it can be constructed and executed in the browser:
 
 ```
 
